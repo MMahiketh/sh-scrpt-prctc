@@ -1,6 +1,6 @@
 #!/bin/bash
 
-STUDENTS=("Suresh", "Ramesh", "Ram")
+STUDENTS=("Suresh" "Ramesh" "Ram")
 
 echo "First person name: ${STUDENTS[0]}"
 echo "Second person name: ${STUDENTS[1]}"
