@@ -1,6 +1,6 @@
 #!/bin/bash
 
-STUDENTS=("Suresh" "Ramesh" "Ram")
+STUDENTS=($@)
 
 echo "First person name: ${STUDENTS[0]}"
 echo "Second person name: ${STUDENTS[1]}"
