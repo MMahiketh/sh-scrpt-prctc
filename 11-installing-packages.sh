@@ -1,18 +1,21 @@
 #!/bin/bash
 
+PACKAGE=$1
+
 	#check if package is already installed or not
-dnf list installed git
+dnf list installed $PACKAGE
 
 		#check if above command exec successfully
 if [ $? -eq 0 ]
 then
-	echo "Package already installed"
+	echo "$PACKAGE already installed"
 	exit 0
 else
-	echo "Package not found in installed list"
-
 	#if not installed, install the package
-		#check if current user is root user
+	echo "$PACKAGE not found in installed list"
+	echo "Trying to install $PACKAGE"
+
+	#check if current user is root user
 	echo "Verifying if user is root user"
 	
 	USER_ID=$(id -u)
@@ -20,20 +23,22 @@ else
 
 	if [ $USER_ID -ne 0 ]
 	then
-		echo "Current user is not the root user."
+		echo "Current user is not the root user"
+		echo "Execute the script with root user"
+		exit 1
 	else
 		echo "Root user detected."
-		dnf install git
+		dnf install $PACKAGE
 	fi
 fi
 
-#check if package is installed correctly
+	#check if package is installed correctly
 
-dnf list installed git
+dnf list installed $PACKAGE
 
-if [ $? -eq 0 ]
+if [ $? -ne 0 ]
 then
-	echo "Package installed successfully"
+	echo "$PACKAGE installation failed"
 else
-	echo "Package installation failed"
+	echo "$PACKAGE installed successfully"
 fi
