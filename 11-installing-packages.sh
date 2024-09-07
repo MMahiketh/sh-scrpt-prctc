@@ -19,7 +19,7 @@ else
 	echo "Verifying if user is root user"
 	
 	USER_ID=$(id -u)
-	echo "$USER_ID"
+#	echo "$USER_ID"
 
 	if [ $USER_ID -ne 0 ]
 	then
@@ -28,7 +28,8 @@ else
 		exit 1
 	else
 		echo "Root user detected."
-		dnf install $PACKAGE
+		echo "Installing $PACKAGE"
+		dnf install $PACKAGE -y
 	fi
 fi
 
