@@ -24,7 +24,7 @@ else
 	if [ $USER_ID -ne 0 ]
 	then
 		echo "Current user is not the root user"
-		echo "Execute the script with root user"
+		echo "Execute the script as root user"
 		exit 1
 	else
 		echo "Root user detected."
