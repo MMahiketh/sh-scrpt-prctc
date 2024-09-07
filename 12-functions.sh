@@ -10,6 +10,8 @@ CHECK_PKG (){
 	then
 		echo "$1 listed in installed packages"
 		exit 0
+	else
+		echo "$1 not found in installed packages"
 	fi	
 }
 
@@ -32,21 +34,29 @@ CHECK_USER(){
 
 }
 
+
+INSTALL_PKG(){
+
+	echo "Installing $1"
+	dnf install $1 -y
+		#Check for successfull installation
+	if [ $? -ne 0 ]
+	then
+		echo "$1 installation failed. Please check."
+	else
+		echo "$1 installed successfully."
+	fi
+}
+
 PACKAGE=$1
 
 	#check if package is already installed or not
 CHECK_PKG $PACKAGE
 
 	#if not installed, install the package
-echo "$PACKAGE not found in installed list"
 echo "Trying to install $PACKAGE"
 
 	#Checking for root user
 CHECK_USER
 
-echo "Installing $PACKAGE"
-dnf install $PACKAGE -y
-
-CHECK_PKG $PACKAGE
-
-echo "$PACKAGE installation failed"
+INSTALL_PKG $PACKAGE
