@@ -15,7 +15,7 @@ CHECK_PKG (){
 		echo "$1 listed in installed packages"
 		exit 0
 	else
-		echo "$1 $R not found $N in installed packages"
+		echo -e "$1 $R not found $N in installed packages"
 	fi	
 }
 
@@ -29,11 +29,11 @@ CHECK_USER(){
 
         if [ $USER_ID -ne 0 ]
         then
-                echo "Current user is $R not root user $N"
+                echo -e "Current user is $R not root user $N"
                 echo "Please execute the $0 as root user"
                 exit 1
         else
-                echo "$G Root user $N detected."
+                echo -e "$G Root user $N detected."
         fi
 
 }
@@ -46,9 +46,9 @@ INSTALL_PKG(){
 		#Check for successfull installation
 	if [ $? -ne 0 ]
 	then
-		echo "$1 $R installation failed... $N Please check."
+		echo -e "$1 $R installation failed... $N Please check."
 	else
-		echo "$1 $G installed successfully... $N"
+		echo -e "$1 $G installed successfully... $N"
 	fi
 }
 
