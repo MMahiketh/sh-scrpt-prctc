@@ -21,7 +21,7 @@ LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME-$TIME_STAMP.log"
 CHECK_USER(){
 
 	#check if current user is root user
-        echo "Checking if user is root"
+        echo "Checking if user is root" &>> $LOG_FILE
 
         USER_ID=$(id -u)
 	#echo "$USER_ID"
@@ -82,11 +82,11 @@ USAGE(){
 
 PACKAGES=$@
 
+sudo mkdir -p $LOGS_FOLDER
 
 #Checking for root user
 CHECK_USER
 
-mkdir -p $LOGS_FOLDER
 
 #Usage instructions
 USAGE $PACKAGES
