@@ -14,7 +14,7 @@ CHECK_PKG (){
 		#check if above command exec successfully
 	if [ $? -eq 0 ]
 	then
-		echo "$B $1 $N already installed... $Y SKIPPING $N"	#term+log
+		echo -e "$B $1 $N already installed... $Y SKIPPING $N"	#term+log
 		exit 0
 	else
 		echo -e "$B $1 $R not found $N in installed packages"	#log
