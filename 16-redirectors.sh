@@ -42,7 +42,7 @@ CHECK_USER(){
 INSTALL_PKG(){
 
 	echo "Installing $1" &>> $LOG_FILE
-	dnf install $1 -y
+	dnf install $1 -y &>> $LOG_FILE
 		#Check for successfull installation
 	if [ $? -ne 0 ]
 	then
@@ -56,14 +56,14 @@ INSTALL_PKG(){
 
 CHECK_PKG (){
 
-	dnf list installed $1
+	dnf list installed $1 &>> $LOG_FILE
 		#check if above command exec successfully
 	if [ $? -eq 0 ]
 	then
 		echo -e "$B $1 $N already installed... $Y SKIPPING $N" | tee -a $LOG_FILE
 	else
 		echo -e "$B $1 $R not found $N in installed packages" &>> $LOG_FILE
-		echo "Trying to install... $PACKAGE"
+		echo "Trying to install... $PACKAGE" &>> $LOG_FILE
 			#if not installed, install the package
 		INSTALL_PKG $1
 	fi
