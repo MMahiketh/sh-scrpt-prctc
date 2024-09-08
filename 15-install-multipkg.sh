@@ -72,7 +72,7 @@ USAGE $PACKAGES
 	#Checking for root user
 CHECK_USER
 
-for PACKAGE in PACKAGES
+for PACKAGE in $PACKAGES
 do
 	#check if package is already installed or not
 	CHECK_PKG $PACKAGE
