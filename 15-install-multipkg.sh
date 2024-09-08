@@ -53,7 +53,21 @@ INSTALL_PKG(){
 	fi
 }
 
+USAGE(){
+
+	if [ $# -eq 0 ]
+	then
+		echo -e "$R USAGE:: $N Pass the packages as arguments"
+		echo "$0 package1 package2 package3 ..."
+		exit 1
+	fi
+}
+
+
 PACKAGES=$@
+
+#Usage instructions
+USAGE $PACKAGES
 
 	#Checking for root user
 CHECK_USER
