@@ -66,6 +66,12 @@ USAGE(){
 
 PACKAGES=$@
 
+
+for i in $PACKAGES
+do
+	echo $i
+done
+
 #Usage instructions
 USAGE $PACKAGES
 
