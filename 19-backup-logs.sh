@@ -35,12 +35,12 @@ then
 fi
 
 cd $TARGET_DIR
-FILES=$(find ./ -type f -name "*.log" -mtime +${DAYS_OLD})
+FILES=$(find ./ -type f -name "*.log" -mtime +$DAYS_OLD)
 
 #Check if any file found
 if [ -z "$FILES" ]
 then
-	echo -e "${R}No files found${N} older than $DAYS_OLD days. No need to backup $TARGET_DIR"
+	echo -e "${R}No files found${N} older than $DAYS_OLD days. No need to backup $PWD"
 else
 	#Archiving and Deleting them
 	zip -vm $DESTIN_FILE $FILES
