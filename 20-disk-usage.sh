@@ -15,9 +15,9 @@ do
 	USED=$disks|cut -d " " -f1
 	echo "disk is $DISK and used is $USED"
 	
-	if [ $USED -gt $DISK_THRESHOLD ]
-	then
-		echo "$DISK is more than ${DISK_THRESHOLD}%. Current usages is ${USED}%"
-	fi
+	#if [ $USED -gt $DISK_THRESHOLD ]
+	#then
+	#	echo "$DISK is more than ${DISK_THRESHOLD}%. Current usages is ${USED}%"
+	#fi
 	#echo "$($disks|cut -d " " -f2)"
 done <<< $DISK_USAGE
