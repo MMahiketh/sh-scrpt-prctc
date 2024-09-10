@@ -6,10 +6,10 @@ Y="\e[33m"
 B="\e[34m"
 N="\e[0m"
 
-DISK_USAGE=$(df -hT|grep "xfs"|awk -F " " '{print $NF,$(NF-1)}'|cut -d "%" -f1) 
+DISK_USAGE=$(df -hT|grep "xfs"|awk -F " " '{print $(NF-1)},$NF'|cut -d "%" -f1) 
 DISK_THRESHOLD=5
 
-echo "$DISK_USAGE is"
+#echo "$DISK_USAGE is"
 
 while IFS= read -r disks
 do
