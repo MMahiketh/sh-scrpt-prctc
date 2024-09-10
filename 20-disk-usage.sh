@@ -6,7 +6,7 @@ Y="\e[33m"
 B="\e[34m"
 N="\e[0m"
 
-DISK_USAGE=$(df -hT|grep "xfs"|awk -F " " '{print $(NF-1),$NF}'
+DISK_USAGE=$(df -hT|grep "xfs"|awk -F " " '{print $(NF-1),$NF}')
 DISK_THRESHOLD=5
 
 while IFS= read -r disks
@@ -15,9 +15,9 @@ do
 	USED=$disks|cut -d " " -f1
 	echo "disk is $DISK and used is $USED"
 	
-	#if [ $($disks|cut -d " " -f1) -ge $DISK_THRESHOLD ]
-	#then
-	#	echo "$($disks|cut -d " " -f2) is more than ${DISK_THRESHOLD}%. Current usages is $($disks|cut -d " " -f1)%"
-	#fi
+	if [ $USED -gt $DISK_THRESHOLD ]
+	then
+		echo "$DISK is more than ${DISK_THRESHOLD}%. Current usages is ${USED}%"
+	fi
 	#echo "$($disks|cut -d " " -f2)"
 done <<< $DISK_USAGE
