@@ -6,11 +6,13 @@ Y="\e[33m"
 B="\e[34m"
 N="\e[0m"
 
-USERID=$(id -u)
 TARGET_DIR=$1
 DESTIN_DIR=$2
 DAYS_OLD=${3: 14} #Takes +14 as default input, when 3rd argument is not passed
 
+USERID=$(id -u)
+TIMESTAMP=$(date +%Y-%m-%d::%H:%M:%S)
+DESTIN_FILE="${DESTIN_DIR}/app-${TIMESTAMP}-logs.zip"
 #Check for correct no. of arguments
 if [ $# -lt 2 ] || [ $# -gt 3 ]
 then
