@@ -13,8 +13,9 @@ echo "$DISK_USAGE is"
 
 while IFS= read -r disks
 do
-	if [ $($disks|cut -d " " -f2) -ge $DISK_THRESHOLD ]
-	then
-		echo "$($disks|cut -d " " -f1) is more than ${DISK_THRESHOLD}%. Current usages is $($disks|cut -d " " -f1)%"
-	fi
+	#if [ $($disks|cut -d " " -f2) -ge $DISK_THRESHOLD ]
+	#then
+	#	echo "$($disks|cut -d " " -f1) is more than ${DISK_THRESHOLD}%. Current usages is $($disks|cut -d " " -f1)%"
+	#fi
+	echo "$($disks|cut -d " " -f2)"
 done <<< $DISK_USAGE
