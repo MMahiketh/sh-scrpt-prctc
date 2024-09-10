@@ -38,10 +38,9 @@ then
 	echo -e "No files found older than 14 days. No need to clean $TARGET_DIR"
 else
 	#Delete files
-	echo "files need to be deleted are:"
+	echo "deleteing below files:"
 	while IFS= read -r file
 	do
-		echo "$file"
 		rm -vrf $file
 	done <<< $FILES
 fi
