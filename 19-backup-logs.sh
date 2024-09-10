@@ -8,7 +8,7 @@ N="\e[0m"
 
 TARGET_DIR=$1
 DESTIN_DIR=$2
-DAYS_OLD=${3: 14} #Takes +14 as default input, when 3rd argument is not passed
+DAYS_OLD=${3}	#: 14} #Takes +14 as default input, when 3rd argument is not passed
 
 USERID=$(id -u)
 TIMESTAMP=$(date +%Y-%m-%d::%H:%M:%S)
